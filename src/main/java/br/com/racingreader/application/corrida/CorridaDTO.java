@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Builder
 @Data
@@ -18,7 +17,7 @@ import java.util.List;
 public class CorridaDTO implements Serializable {
 
     private LocalDateTime hora;
-    private List<PilotoDTO> pilotos;
-    private List<VoltaDTO> voltas;
+    private PilotoDTO piloto;
+    private VoltaDTO volta;
 
 }

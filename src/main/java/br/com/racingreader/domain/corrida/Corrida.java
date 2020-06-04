@@ -1,6 +1,5 @@
 package br.com.racingreader.domain.corrida;
 
-import br.com.racingreader.domain.piloto.Piloto;
 import br.com.racingreader.domain.volta.Volta;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Corrida implements Serializable {
 
-    private List<Piloto> pilotos;
     private List<Volta> voltas;
 
 }
