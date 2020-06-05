@@ -6,19 +6,18 @@ import br.com.racingreader.domain.piloto.Piloto;
 import br.com.racingreader.domain.volta.Volta;
 import br.com.racingreader.utils.FileUtils;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static br.com.racingreader.application.corrida.fatory.CorridaFactory.buildresultadoCorridaDTO;
 import static br.com.racingreader.application.piloto.factory.PilotoFactory.buildPiloto;
 import static br.com.racingreader.application.volta.factory.VoltaFactory.buildVolta;
 import static java.lang.Integer.parseInt;
-import static java.lang.String.format;
 import static java.nio.file.Paths.get;
 import static java.util.stream.Collectors.toList;
 
@@ -26,7 +25,7 @@ public class CorridaApplicationService extends Validators {
 
     public List<ResultadoCorridaDTO> buildCorridaFromFileInput(String fileName) {
         FileUtils fileUtils = new FileUtils();
-        List<Volta> voltas = null;
+        List<Volta> voltas = new ArrayList<>();
         try (Stream<String> fileLines = Files.lines(get(fileName))) {
             voltas = new ArrayList<>(fileLines.map(line -> {
                 String hora = getHoraFromLine(line);
@@ -44,10 +43,9 @@ public class CorridaApplicationService extends Validators {
                         buildIfItsValidLocalTimeWithMinutes(tempoVolta),
                         buildVelodicadeMediaVoltaIfItsValidBigDecimal(velocidadeMediavolta));
 
-            }).collect(toList()));
-        } catch (IOException ex) {
-            fileUtils.generateLog(CorridaApplicationService.class,
-                    format("[!] Arquivo com formato inválido: [%s].", ex.getMessage()));
+            }).collect(Collectors.toList()));
+        } catch (Exception ex) {
+            fileUtils.generateLog(CorridaApplicationService.class, "[!] Arquivo com formato inválido");
         }
         return buildresultadoCorridaDTO(voltas);
     }

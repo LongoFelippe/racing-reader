@@ -4,10 +4,7 @@ import br.com.racingreader.application.corrida.CorridaApplicationService;
 import br.com.racingreader.application.corrida.dto.ResultadoCorridaDTO;
 import br.com.racingreader.utils.FileUtils;
 
-import java.io.IOException;
 import java.util.List;
-
-import static java.lang.String.format;
 
 public class RacingReaderApplication {
 
@@ -19,19 +16,17 @@ public class RacingReaderApplication {
         try {
             fileUtils.veriyFileExists(INPUT_RACING_FILE_NAME);
 
-            fileUtils.generateLog(RacingReaderApplication.class, "Iniciando leitura...");
+            fileUtils.generateLog(RacingReaderApplication.class, "[+] Iniciando leitura...");
 
             List<ResultadoCorridaDTO> resultadoCorrida = applicationService.buildCorridaFromFileInput(INPUT_RACING_FILE_NAME);
             resultadoCorrida.forEach(resultado ->
                     fileUtils.generateLog(RacingReaderApplication.class, resultado.toString())
             );
 
-            fileUtils.generateLog(RacingReaderApplication.class, "Leitura finalizada!");
-
-        } catch (IOException ex) {
-            fileUtils.generateLog(RacingReaderApplication.class,
-                    format("[!] Erro durante a execução: [%s].", ex.getMessage()));
+        } catch (Exception ex) {
+            fileUtils.generateLog(RacingReaderApplication.class, "[!] Erro durante a execução");
         }
+        fileUtils.generateLog(RacingReaderApplication.class, "[+] Leitura finalizada!");
     }
 
 }
