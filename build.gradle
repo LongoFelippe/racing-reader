@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'br.com'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('lombokVersion', '1.18.10')
+}
+
+dependencies {
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compile "org.projectlombok:lombok:${lombokVersion}"
+}
