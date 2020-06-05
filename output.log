@@ -236,3 +236,14 @@
 2020-06-05 13:43:29 : br.com.racingreader.RacingReaderApplication : [+] Iniciando leitura...
 2020-06-05 13:43:29 : br.com.racingreader.application.corrida.CorridaApplicationService : [!] Arquivo com formato inválido
 2020-06-05 13:43:29 : br.com.racingreader.RacingReaderApplication : [+] Leitura finalizada!
+2020-06-05 14:56:39 : br.com.racingreader.RacingReaderApplication : [+] Iniciando leitura...
+2020-06-05 14:56:39 : br.com.racingreader.application.corrida.CorridaApplicationService : [!] Arquivo com formato inválido
+2020-06-05 14:56:39 : br.com.racingreader.RacingReaderApplication : [+] Leitura finalizada!
+2020-06-05 14:57:12 : br.com.racingreader.RacingReaderApplication : [+] Iniciando leitura...
+2020-06-05 14:57:13 : br.com.racingreader.RacingReaderApplication : ResultadoCorridaDTO(posicaoChegada=1, codigoPiloto=38, nomePiloto=F.MASSA, qtdVoltasCompletadasPorPiloto=4, tempoTotalProva=00:04:11.578)
+2020-06-05 14:57:13 : br.com.racingreader.RacingReaderApplication : ResultadoCorridaDTO(posicaoChegada=2, codigoPiloto=33, nomePiloto=R.BARRICHELLO, qtdVoltasCompletadasPorPiloto=4, tempoTotalProva=00:04:16.080)
+2020-06-05 14:57:13 : br.com.racingreader.RacingReaderApplication : ResultadoCorridaDTO(posicaoChegada=3, codigoPiloto=2, nomePiloto=K.RAIKKONEN, qtdVoltasCompletadasPorPiloto=4, tempoTotalProva=00:04:15.153)
+2020-06-05 14:57:13 : br.com.racingreader.RacingReaderApplication : ResultadoCorridaDTO(posicaoChegada=4, codigoPiloto=23, nomePiloto=M.WEBBER, qtdVoltasCompletadasPorPiloto=4, tempoTotalProva=00:04:17.722)
+2020-06-05 14:57:13 : br.com.racingreader.RacingReaderApplication : ResultadoCorridaDTO(posicaoChegada=5, codigoPiloto=15, nomePiloto=F.ALONSO, qtdVoltasCompletadasPorPiloto=4, tempoTotalProva=00:04:54.221)
+2020-06-05 14:57:13 : br.com.racingreader.RacingReaderApplication : ResultadoCorridaDTO(posicaoChegada=6, codigoPiloto=11, nomePiloto=S.VETTEL, qtdVoltasCompletadasPorPiloto=3, tempoTotalProva=00:06:27.276)
+2020-06-05 14:57:13 : br.com.racingreader.RacingReaderApplication : [+] Leitura finalizada!
