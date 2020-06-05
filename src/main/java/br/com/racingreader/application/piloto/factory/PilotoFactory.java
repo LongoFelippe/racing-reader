@@ -1,4 +1,4 @@
-package br.com.racingreader.application.piloto;
+package br.com.racingreader.application.piloto.factory;
 
 import br.com.racingreader.domain.piloto.Piloto;
 

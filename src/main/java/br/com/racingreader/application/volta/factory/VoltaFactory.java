@@ -1,4 +1,4 @@
-package br.com.racingreader.application.volta;
+package br.com.racingreader.application.volta.factory;
 
 import br.com.racingreader.domain.piloto.Piloto;
 import br.com.racingreader.domain.volta.Volta;
