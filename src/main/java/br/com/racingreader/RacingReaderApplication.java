@@ -1,9 +1,11 @@
 package br.com.racingreader;
 
 import br.com.racingreader.application.corrida.CorridaApplicationService;
+import br.com.racingreader.application.corrida.dto.ResultadoCorridaDTO;
 import br.com.racingreader.utils.FileUtils;
 
 import java.io.IOException;
+import java.util.List;
 
 import static java.lang.String.format;
 
@@ -19,7 +21,10 @@ public class RacingReaderApplication {
 
             fileUtils.generateLog(RacingReaderApplication.class, "Iniciando leitura...");
 
-            applicationService.buildCorridaFromFileInput(INPUT_RACING_FILE_NAME);
+            List<ResultadoCorridaDTO> resultadoCorrida = applicationService.buildCorridaFromFileInput(INPUT_RACING_FILE_NAME);
+            resultadoCorrida.forEach(resultado ->
+                    fileUtils.generateLog(RacingReaderApplication.class, resultado.toString())
+            );
 
             fileUtils.generateLog(RacingReaderApplication.class, "Leitura finalizada!");
 

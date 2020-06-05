@@ -12,24 +12,23 @@ import java.nio.file.Files;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static br.com.racingreader.application.corrida.fatory.CorridaFactory.buildQtdVoltasCompletadas;
+import static br.com.racingreader.application.corrida.fatory.CorridaFactory.buildresultadoCorridaDTO;
 import static br.com.racingreader.application.piloto.factory.PilotoFactory.buildPiloto;
 import static br.com.racingreader.application.volta.factory.VoltaFactory.buildVolta;
-import static br.com.racingreader.application.volta.factory.VoltaFactory.buildVoltasEncerradas;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.format;
 import static java.nio.file.Paths.get;
+import static java.util.stream.Collectors.toList;
 
 public class CorridaApplicationService extends Validators {
 
-    public void buildCorridaFromFileInput(String fileName) {
+    public List<ResultadoCorridaDTO> buildCorridaFromFileInput(String fileName) {
         FileUtils fileUtils = new FileUtils();
-
+        List<Volta> voltas = null;
         try (Stream<String> fileLines = Files.lines(get(fileName))) {
-            List<Volta> voltas = new ArrayList<>(fileLines.map(line -> {
+            voltas = new ArrayList<>(fileLines.map(line -> {
                 String hora = getHoraFromLine(line);
                 String codigo = getCodigoFromLine(line);
                 String nome = getNomeFromLine(line);
@@ -45,17 +44,12 @@ public class CorridaApplicationService extends Validators {
                         buildIfItsValidLocalTimeWithMinutes(tempoVolta),
                         buildVelodicadeMediaVoltaIfItsValidBigDecimal(velocidadeMediavolta));
 
-            }).collect(Collectors.toList()));
-
-            List<ResultadoCorridaDTO> resultadoCorrida = buildResultadoCorrida(voltas);
-            fileUtils.generateLog(CorridaApplicationService.class, resultadoCorrida.toString());
-            resultadoCorrida.forEach(System.out::println);
-
-
+            }).collect(toList()));
         } catch (IOException ex) {
             fileUtils.generateLog(CorridaApplicationService.class,
                     format("[!] Arquivo com formato inválido: [%s].", ex.getMessage()));
         }
+        return buildresultadoCorridaDTO(voltas);
     }
 
     private String getHoraFromLine(String line) {
@@ -100,11 +94,6 @@ public class CorridaApplicationService extends Validators {
 
     private BigDecimal buildVelodicadeMediaVoltaIfItsValidBigDecimal(String value) {
         return super.isValidBigDecimal(value);
-    }
-
-    private List<ResultadoCorridaDTO> buildResultadoCorrida(List<Volta> voltas) {
-        List<Volta> voltasEncerradas = buildVoltasEncerradas(voltas);
-        return buildQtdVoltasCompletadas(voltasEncerradas);
     }
 
 }
